@@ -422,7 +422,7 @@ class BLiveClient:
             # 准备重连
             retry_count += 1
             logger.warning('room=%d is reconnecting, retry_count=%d', self.room_id, retry_count)
-            await asyncio.sleep(1, loop=self._loop)
+            await asyncio.sleep(1)
 
     async def _on_ws_connect(self):
         """
@@ -595,10 +595,10 @@ class BLiveClient:
         results = await asyncio.shield(
             asyncio.gather(
                 *(handler.handle(self, command) for handler in self._handlers),
-                loop=self._loop,
+                # loop=self._loop,
                 return_exceptions=True
             ),
-            loop=self._loop
+            # loop=self._loop
         )
         for res in results:
             if isinstance(res, Exception):

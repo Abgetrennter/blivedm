@@ -6,37 +6,37 @@ from . import client as client_
 from . import models
 
 __all__ = (
-    'HandlerInterface',
-    'BaseHandler',
+        'HandlerInterface',
+        'BaseHandler',
 )
 
 logger = logging.getLogger('blivedm')
 
 # 常见可忽略的cmd
 IGNORED_CMDS = (
-    'COMBO_SEND',
-    'ENTRY_EFFECT',
-    'HOT_RANK_CHANGED',
-    'HOT_RANK_CHANGED_V2',
-    'INTERACT_WORD',
-    'LIVE',
-    'LIVE_INTERACTIVE_GAME',
-    'NOTICE_MSG',
-    'ONLINE_RANK_COUNT',
-    'ONLINE_RANK_TOP3',
-    'ONLINE_RANK_V2',
-    'PK_BATTLE_END',
-    'PK_BATTLE_FINAL_PROCESS',
-    'PK_BATTLE_PROCESS',
-    'PK_BATTLE_PROCESS_NEW',
-    'PK_BATTLE_SETTLE',
-    'PK_BATTLE_SETTLE_USER',
-    'PK_BATTLE_SETTLE_V2',
-    'PREPARING',
-    'ROOM_REAL_TIME_MESSAGE_UPDATE',
-    'STOP_LIVE_ROOM_LIST',
-    'SUPER_CHAT_MESSAGE_JPN',
-    'WIDGET_BANNER',
+        'COMBO_SEND',
+        'ENTRY_EFFECT',
+        'HOT_RANK_CHANGED',
+        'HOT_RANK_CHANGED_V2',
+        'INTERACT_WORD',
+        'LIVE',
+        'LIVE_INTERACTIVE_GAME',
+        'NOTICE_MSG',
+        'ONLINE_RANK_COUNT',
+        'ONLINE_RANK_TOP3',
+        'ONLINE_RANK_V2',
+        'PK_BATTLE_END',
+        'PK_BATTLE_FINAL_PROCESS',
+        'PK_BATTLE_PROCESS',
+        'PK_BATTLE_PROCESS_NEW',
+        'PK_BATTLE_SETTLE',
+        'PK_BATTLE_SETTLE_USER',
+        'PK_BATTLE_SETTLE_V2',
+        'PREPARING',
+        'ROOM_REAL_TIME_MESSAGE_UPDATE',
+        'STOP_LIVE_ROOM_LIST',
+        'SUPER_CHAT_MESSAGE_JPN',
+        'WIDGET_BANNER',
 )
 
 # 已打日志的未知cmd
@@ -83,19 +83,19 @@ class BaseHandler(HandlerInterface):
             Awaitable
         ]]
     ] = {
-        # 收到心跳包，这是blivedm自造的消息，原本的心跳包格式不一样
-        '_HEARTBEAT': __heartbeat_callback,
-        # 收到弹幕
-        # go-common\app\service\live\live-dm\service\v1\send.go
-        'DANMU_MSG': __danmu_msg_callback,
-        # 有人送礼
-        'SEND_GIFT': __send_gift_callback,
-        # 有人上舰
-        'GUARD_BUY': __guard_buy_callback,
-        # 醒目留言
-        'SUPER_CHAT_MESSAGE': __super_chat_message_callback,
-        # 删除醒目留言
-        'SUPER_CHAT_MESSAGE_DELETE': __super_chat_message_delete_callback,
+            # 收到心跳包，这是blivedm自造的消息，原本的心跳包格式不一样
+            '_HEARTBEAT'               : __heartbeat_callback,
+            # 收到弹幕
+            # go-common\app\service\live\live-dm\service\v1\send.go
+            'DANMU_MSG'                : __danmu_msg_callback,
+            # 有人送礼
+            'SEND_GIFT'                : __send_gift_callback,
+            # 有人上舰
+            'GUARD_BUY'                : __guard_buy_callback,
+            # 醒目留言
+            'SUPER_CHAT_MESSAGE'       : __super_chat_message_callback,
+            # 删除醒目留言
+            'SUPER_CHAT_MESSAGE_DELETE': __super_chat_message_delete_callback,
     }
     # 忽略其他常见cmd
     for cmd in IGNORED_CMDS:

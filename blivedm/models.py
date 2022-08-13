@@ -32,6 +32,27 @@ class HeartbeatMessage:
         )
 
 
+class SeenMessage:
+    """
+    多少人看过直播
+
+    :param seen_people: 人数
+    """
+
+    def __init__(
+        self,
+        seen_people: int = None,
+    ):
+        self.seen: int = seen_people
+
+    @classmethod
+    def from_command(cls, data: dict):
+        return cls(
+            seen_people=data['num'],
+        )
+
+
+
 class DanmakuMessage:
     """
     弹幕消息
